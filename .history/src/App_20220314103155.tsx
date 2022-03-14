@@ -6,7 +6,7 @@ import type { Product } from './types/product'
 
 function App() {
   const [count, setCount] = useState<number>(0);
-  const [info, setInfo] = useState<Product>({
+  const [infor, setInfo] = useState<Product>({
     name: 'Tran Minh',
     age: 22
   });
@@ -14,8 +14,7 @@ function App() {
 
   return (
     <div className="App">
-      {count} <button onClick={() => setCount(count + 1)}>Click</button>
-      <ShowInfor person={info} />
+      <ShowInfor person={infor} />
     </div>
   )
 }
