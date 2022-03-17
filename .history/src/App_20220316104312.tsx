@@ -9,10 +9,6 @@ import Homepage from './pages/Homepage';
 import AboutPage from './pages/AboutPage';
 import ProductPage from './pages/ProductPage';
 import WebsiteLayout from './pages/layouts/WebsiteLayout';
-import AdminLayout from './pages/layouts/AdminLayout';
-import ProductManager from './pages/ProductManager';
-import Dashboard from './pages/Dashboard';
-import ProductDetail from './pages/ProductDetail';
 
 function App() {
 
@@ -23,7 +19,7 @@ function App() {
       setProducts(data);
     }
     getProducts();
-  }, [])
+  })
 
 
   return (
@@ -31,24 +27,9 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<WebsiteLayout />} >
-
             <Route index element={<Homepage />} />
-            {/* Cách 1: để vào chi tiết sản phẩm 
-                <Route path="product">
-                  <Route element={<ProductPage />} />
-                  <Route path=":id" element={<ProductDetail />} />
-                </Route> */}
-            {/* Cách 2: để vào chi tiết sản phẩm */}
             <Route path="product" element={<ProductPage />} />
-            <Route path="/product/:id" element={<ProductDetail />} />
-
             <Route path="about" element={<AboutPage />} />
-          </Route>
-
-          <Route path="admin" element={<AdminLayout />} >
-            <Route index element={<Navigate to="/admin/dashboard" />} />
-            <Route path="dashboard" element={<Dashboard />} />
-            <Route path="product" element={<ProductManager />} />
           </Route>
         </Routes>
       </main>
