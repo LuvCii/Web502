@@ -42,7 +42,13 @@ function App() {
           <Route path="/" element={<WebsiteLayout />} >
 
             <Route index element={<Homepage />} />
-            <Route path="product" element={<ProductPage />} />
+            {/* Cách 1: để vào chi tiết sản phẩm 
+                <Route path="product">
+                  <Route element={<ProductPage />} />
+                  <Route path=":id" element={<ProductDetail />} />
+                </Route> */}
+            {/* Cách 2: để vào chi tiết sản phẩm */}
+            <Route path="product" element={<ProductPage products={products} />} />
             <Route path="/product/:id" element={<ProductDetail />} />
 
             <Route path="about" element={<AboutPage />} />
