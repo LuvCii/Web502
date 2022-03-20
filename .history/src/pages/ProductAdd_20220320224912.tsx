@@ -22,7 +22,7 @@ const ProductAdd = (props: ProductAddProps) => {
         // call api
         props.onAdd(dataInput);
         // chuyển trang
-        navigate("/admin/product")
+        navigate("/product")
     }
     return (
         <div>

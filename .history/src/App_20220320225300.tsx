@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import ShowInfor from './components/ShowInfor';
-import type { ProductType } from './types/product'
+// import type { ProductType } from './types/product'
 import { add, list } from './api/product';
 import { Navigate, Route, Routes, NavLink } from 'react-router-dom';
 import Homepage from './pages/Homepage';
@@ -17,7 +17,7 @@ import ProductAdd from './pages/ProductAdd';
 
 function App() {
 
-  const [products, setProducts] = useState<ProductType[]>([])
+  const [products, setProducts] = useState<{ ProductType }[]>([])
   useEffect(() => {
     const getProducts = async () => {
       const { data } = await list();
@@ -26,7 +26,6 @@ function App() {
     getProducts();
   }, [])
 
-  // Add Product
   const onHandleAdd = async (product: any) => {
     // console.log('app.js', product);
     // api
@@ -52,13 +51,9 @@ function App() {
             <Route index element={<Homepage />} />
             <Route path="product" element={<ProductPage />} />
             <Route path="/product/:id" element={<ProductDetail />} />
-            <Route path="about" element={<AboutPage />} />
-            <Route path="product/add" element={<ProductAdd onAdd={onHandleAdd} />} />
-            <Route path="product">
-              <Route index element={<ProductPage />} />
-              <Route path=":id" element={<ProductDetail />} />
-            </Route>
 
+            <Route path="about" element={<AboutPage />} />
+            <Route path="product/add" element={<ProductAdd name="Dung" onAdd={onHandleAdd} />} />
           </Route>
 
           <Route path="admin" element={<AdminLayout />} >

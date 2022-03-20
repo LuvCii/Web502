@@ -11,7 +11,7 @@ const ProductManager = (props: ProductManagerProps) => {
             <table>
                 <tbody>
                     {props.products.map((item, index) => {
-                        return <tr key={index}>
+                        return <tr>
                             <td>{index + 1}</td>
                             <td>{item.name}</td>
                             <td>{item.price}</td>
