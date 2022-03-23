@@ -24,8 +24,10 @@ function App() {
       const { data } = await list();
       setProducts(data);
     }
+
+
     getProducts();
-  }, []);
+  }, [])
 
   // Add Product
   const onHandleAdd = async (product: any) => {
@@ -35,25 +37,10 @@ function App() {
     //reRender
     setProducts([...products, data])
   }
-
-  // Remove product
-  const onHandleRemove = async (id?: number) => {
+  const onHandleRemove = async (id: number) => {
     remove(id);
     // reRender
     setProducts(products.filter(item => item.id !== id));
-  }
-
-  // Update product
-  const onHandleUpdate = async (product: ProductType) => {
-    try {
-      //api 
-      const { data } = await update(product);
-      // reRender
-      // Tạo ra 1 vòng lặp, nếu item.id  == id sản phẩm vừa cập nhật (data) , thì cập nhật ngược lại giữ nguyên
-      setProducts(products.map(item => item.id === data.id ? product : item))
-    } catch (error) {
-
-    }
   }
 
   return (
@@ -86,7 +73,7 @@ function App() {
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="product">
               <Route index element={<ProductManager products={products} onRemove={onHandleRemove} />} />
-              <Route path=":id/edit" element={<ProductEdit onUpdate={onHandleUpdate} />} />
+              <Route path=":id/edit" element={<ProductEdit />} />
               <Route path="add" element={<ProductAdd onAdd={onHandleAdd} />} />
             </Route>
           </Route>

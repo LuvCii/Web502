@@ -37,7 +37,7 @@ function App() {
   }
 
   // Remove product
-  const onHandleRemove = async (id?: number) => {
+  const onHandleRemove = async (id: number) => {
     remove(id);
     // reRender
     setProducts(products.filter(item => item.id !== id));
@@ -48,11 +48,10 @@ function App() {
     try {
       //api 
       const { data } = await update(product);
+    } catch (error) {
       // reRender
       // Tạo ra 1 vòng lặp, nếu item.id  == id sản phẩm vừa cập nhật (data) , thì cập nhật ngược lại giữ nguyên
       setProducts(products.map(item => item.id === data.id ? product : item))
-    } catch (error) {
-
     }
   }
 

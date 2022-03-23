@@ -37,7 +37,7 @@ function App() {
   }
 
   // Remove product
-  const onHandleRemove = async (id?: number) => {
+  const onHandleRemove = async (id: number) => {
     remove(id);
     // reRender
     setProducts(products.filter(item => item.id !== id));
