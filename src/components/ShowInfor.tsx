@@ -2,12 +2,12 @@ import React from 'react'
 import { ProductType } from '../types/product';
 
 type ShowInforProps = {
-    person: ProductType
+    children: JSX.Element
 }
 const ShowInfor = (props: ShowInforProps) => {
     console.log(props);
     return (
-        <div>ShowInfor</div>
+        <div>{props.children}</div>
     )
 }
 export default ShowInfor

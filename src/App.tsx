@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import ShowInfor from './components/ShowInfor';
+import type { UserType } from './types/user';
 import type { ProductType } from './types/product'
 import { add, list, remove, update } from './api/product';
 import { Navigate, Route, Routes, NavLink } from 'react-router-dom';
@@ -15,8 +16,30 @@ import Dashboard from './pages/Dashboard';
 import ProductDetail from './pages/ProductDetail';
 import ProductAdd from './pages/ProductAdd';
 import ProductEdit from './pages/ProductEdit';
+import TestShowInfor from './components/TestShowInfor';
+import PrivateRouter from './components/PrivateRouter';
+import Signup from './pages/Signup';
+import Signin from './pages/Signin';
+import { signup } from './api/user';
+import User from './pages/User';
 
 function App() {
+
+  const [users, setUser] = useState<UserType[]>([])
+  // useEffect(() => {
+  //   const getUsers = async () => {
+  //     const { data } = await getAll();
+  //     setUser(data)
+  //   }
+  //   getUsers();
+  // }, []);
+
+  //Add user
+  const onHandleAddUser = async (user: any) => {
+    const { data } = await signup(user);
+    setUser([...users, data])
+  }
+
 
   const [products, setProducts] = useState<ProductType[]>([])
   useEffect(() => {
@@ -81,7 +104,7 @@ function App() {
 
           </Route>
 
-          <Route path="admin" element={<AdminLayout />} >
+          <Route path="admin" element={<PrivateRouter><AdminLayout /></PrivateRouter>} >
             <Route index element={<Navigate to="/admin/dashboard" />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="product">
@@ -90,6 +113,9 @@ function App() {
               <Route path="add" element={<ProductAdd onAdd={onHandleAdd} />} />
             </Route>
           </Route>
+          <Route path='login' element={<h1>Login page</h1>}></Route>
+          <Route path='signup' element={<Signup onAddUser={onHandleAddUser} />}></Route>
+          <Route path='signin' element={<Signin />}></Route>
         </Routes>
       </main>
     </div>
