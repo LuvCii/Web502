@@ -15,6 +15,8 @@ import Dashboard from './pages/Dashboard';
 import ProductDetail from './pages/ProductDetail';
 import ProductAdd from './pages/ProductAdd';
 import ProductEdit from './pages/ProductEdit';
+import TestShowInfo from './components/TestShowInfor';
+import PrivateRouter from './components/PrivateRouter';
 
 function App() {
 
@@ -81,7 +83,7 @@ function App() {
 
           </Route>
 
-          <Route path="admin" element={<AdminLayout />} >
+          <Route path="admin" element={<PrivateRouter><AdminLayout /></PrivateRouter>} >
             <Route index element={<Navigate to="/admin/dashboard" />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="product">
@@ -90,6 +92,7 @@ function App() {
               <Route path="add" element={<ProductAdd onAdd={onHandleAdd} />} />
             </Route>
           </Route>
+          <Route path="login" element={<h1>Login page</h1>} />
         </Routes>
       </main>
     </div>
