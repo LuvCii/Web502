@@ -1,8 +1,3 @@
 {
-    "products": [{
-        "name": "iphone",
-        "price": "23000",
-        "desc": "iaiapaaa",
-        "id": 4
-    }]
+    "products": []
 }
