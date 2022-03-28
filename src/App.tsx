@@ -17,6 +17,8 @@ import ProductAdd from './pages/ProductAdd';
 import ProductEdit from './pages/ProductEdit';
 import TestShowInfo from './components/TestShowInfor';
 import PrivateRouter from './components/PrivateRouter';
+import Signin from './pages/Signin';
+import Signup from './pages/Signup';
 
 function App() {
 
@@ -93,6 +95,8 @@ function App() {
             </Route>
           </Route>
           <Route path="login" element={<h1>Login page</h1>} />
+          <Route path="/signin" element={<Signin />} />
+          <Route path="/signup" element={<Signup />} />
         </Routes>
       </main>
     </div>
