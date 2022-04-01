@@ -30,13 +30,13 @@ const index = (props: Props) => {
 
                             <tbody className="bg-white">
                                 <tr>
-                                    <td className=" whitespace-no-wrap ">
+                                    <td className=" whitespace-no-wrap border-b border-gray-200 ">
                                         <div className="text-sm  leading-5 text-gray-500">1</div>
                                     </td>
-                                    <td className="px-6 py-4 whitespace-no-wrap ">
+                                    <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 ">
                                         <div className="">
                                             <div className="">
-                                                <div className="text-sm text-left leading-5 font-medium text-gray-900">Đắc nhân tâm aaaaaaaaaaaaaaaaaaaa </div>
+                                                <div className="text-sm text-left leading-5 font-medium text-gray-900">Đắc nhân tâm  </div>
                                             </div>
                                         </div>
                                     </td>
@@ -53,6 +53,8 @@ const index = (props: Props) => {
                                         <a href="#" className="text-xs rounded-full bg-blue-500 text-white px-3 pt-[7px]  hover:scale-125 hover:bg-blue-700  ease-in-out transition-all ml-6">Edit</a>
                                     </td>
                                 </tr>
+
+
 
 
 
