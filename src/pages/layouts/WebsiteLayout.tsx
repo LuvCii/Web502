@@ -1,6 +1,7 @@
 import React from 'react'
 import { Outlet, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Banner from '../../components/Banner';
 
 type Props = {}
 
@@ -63,6 +64,9 @@ const WebsiteLayout = (props: Props) => {
 
 
       </header>
+      <div>
+        {Banner}
+      </div>
       <main>
         <Outlet />
       </main>

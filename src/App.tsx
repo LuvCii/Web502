@@ -7,6 +7,11 @@ import Dashboard from './pages/admin/Dashboard';
 import AdminLayout from './pages/layouts/AdminLayout';
 import WebsiteLayout from './pages/layouts/WebsiteLayout';
 import { Route, Routes, Navigate } from 'react-router-dom';
+import Signin from './pages/Signin';
+import IndexProduct from './pages/admin/product';
+import IndexUser from './pages/admin/user';
+import IndexCate from './pages/admin/category';
+import IndexCart from './pages/admin/cart';
 
 
 function App() {
@@ -25,12 +30,18 @@ function App() {
           <Route path="admin" element={<AdminLayout />}>
             <Route index element={<Navigate to="/admin/dashboard" />} />
             <Route path="dashboard" element={<Dashboard />} />
+            <Route path="product" element={<IndexProduct />} />
+            <Route path="user" element={<IndexUser />} />
+            <Route path="category" element={<IndexCate />} />
+            <Route path="cart" element={<IndexCart />} />
           </Route>
           {/* router admin */}
+          <Route path="signin" element={<Signin />} />
         </Routes>
       </main>
     </div>
   )
 }
+import index from './pages/admin/category';
 
 export default App
