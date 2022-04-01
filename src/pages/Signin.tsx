@@ -32,9 +32,9 @@ const Signin = (props: Props) => {
                                     <div className="form-group form-check">
                                         <input
                                             type="checkbox"
-                                            className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                                            className=" h-4 w-4 border border-gray-300 rounded-sm bg-white  focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                                             id=""
-                                            checked
+
                                         />
                                         <label className="form-check-label inline-block text-gray-800" >Remember me</label>
                                     </div>
@@ -42,7 +42,7 @@ const Signin = (props: Props) => {
                                 </div>
 
 
-                                <button type="submit" className="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full"
+                                <button type="submit" className="inline-block px-7 py-3 bg-red-500 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full"
                                     data-mdb-ripple="true" data-mdb-ripple-color="light" >
                                     Sign in
                                 </button>
@@ -72,7 +72,7 @@ const Signin = (props: Props) => {
                                         /></svg>Continue with Facebook
                                 </a>
                                 <a
-                                    className="bg-zinc-500 px-7 py-3 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full flex justify-center items-center"
+                                    className="bg-zinc-500 hover:bg-zinc-700 px-7 py-3 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full flex justify-center items-center"
 
                                     href="#!"
                                     role="button"
