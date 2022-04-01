@@ -25,39 +25,45 @@ const AdminLayout = (props: Props) => {
                     </div>
 
                     <nav className="mt-10">
-                        <Link className="flex items-center mt-4 py-2 px-6 bg-gray-700 bg-opacity-25 text-gray-100" to="/admin/dashboard">
+                        <Link className="flex items-center mt-3 py-4 px-6 bg-gray-700 bg-opacity-25 text-gray-100" to="/admin/dashboard">
 
                             <img src="https://i.ibb.co/BBLFfb1/business-report.png" className='w-9' alt="" />
 
-                            <span className="mx-3">Dashboard</span>
+                            <span className="mx-6">Dashboard</span>
                         </Link>
 
 
-                        <Link className="flex items-center mt-4 py-2 px-6 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100"
+                        <Link className="flex items-center mt-4 py-4 px-6 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100"
                             to="/admin/category">
 
                             <img src="https://i.ibb.co/w08GwLK/categories.png" className='w-9' alt="" />
 
-                            <span className="mx-3">Categories</span>
+                            <span className="mx-6">Categories</span>
                         </Link>
 
-                        <Link className="flex items-center mt-4 py-2 px-6 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100"
+                        <Link className="flex items-center mt-4 py-4 px-6 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100"
                             to="/admin/product">
                             <img src="https://i.ibb.co/PZCsnH5/book.png" className='w-9' alt="" />
 
-                            <span className="mx-3">Products</span>
+                            <span className="mx-6">Products</span>
                         </Link>
-                        <Link className="flex items-center mt-4 py-2 px-6 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100"
+                        <Link className="flex items-center mt-4 py-4 px-6 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100"
                             to="/admin/user">
                             <img src="https://i.ibb.co/3YCbFjf/man.png" className='w-9' alt="" />
 
-                            <span className="mx-3">User</span>
+                            <span className="mx-6">User</span>
                         </Link>
-                        <Link className="flex items-center mt-4 py-2 px-6 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100"
+                        <Link className="flex items-center mt-4 py-4 px-6 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100"
                             to="/admin/cart">
                             <img src="https://i.ibb.co/WB0MBmT/shopping-cart.png" className='w-9' alt="" />
 
-                            <span className="mx-3">Cart</span>
+                            <span className="mx-6">Cart</span>
+                        </Link>
+                        <Link className="flex items-center mt-4 py-4 px-6 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100"
+                            to="/">
+                            <img src="https://i.ibb.co/DMJKW8g/home-button.png" className='w-9' alt="" />
+
+                            <span className="mx-6">Back Home</span>
                         </Link>
                     </nav>
                 </div>
@@ -72,17 +78,20 @@ const AdminLayout = (props: Props) => {
                             </button>
 
                             <div className="relative mx-4 lg:mx-0">
-                                <span className="absolute inset-y-0 left-0 pl-3 flex items-center">
-                                    <svg className="h-5 w-5 text-gray-500" viewBox="0 0 24 24" fill="none">
-                                        <path
-                                            d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
-                                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        </path>
-                                    </svg>
-                                </span>
+                                <form action="">
+                                    <span className="absolute inset-y-0 left-0 pl-3 flex items-center">
+                                        <svg className="h-5 w-5 text-gray-500" viewBox="0 0 24 24" fill="none">
+                                            <path
+                                                d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            </path>
+                                        </svg>
+                                    </span>
 
-                                <input className="form-input w-32 sm:w-64 rounded-md pl-10 pr-4 focus:border-indigo-600 z-30" type="text"
-                                    placeholder="Search" />
+                                    <input className="py-2 w-32 sm:w-64 rounded-md pl-10 pr-4 focus:border-indigo-600 z-30" type="text"
+                                        placeholder="Search" />
+
+                                </form>
 
                             </div>
                         </div>
@@ -109,7 +118,7 @@ const AdminLayout = (props: Props) => {
                                         alt="Your avatar" />
                                 </button>
 
-                                <div className="fixed inset-0 h-full w-full z-10"></div>
+                                {/* <div className="fixed inset-0 h-full w-full z-10"></div> */}
 
 
                             </div>
@@ -119,10 +128,10 @@ const AdminLayout = (props: Props) => {
                         <div className="container mx-auto px-6 py-8">
                             <h3 className="text-gray-700 text-3xl font-medium">Dashboard</h3>
 
-                            <div className="mt-4">
+                            <div className="mt-9">
                                 <div className="flex flex-wrap -mx-6">
-                                    <div className="w-full px-6 sm:w-1/2 xl:w-1/3">
-                                        <div className="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
+                                    <div className="w-full px-6 sm:w-1/2 xl:w-1/4">
+                                        <div className="flex items-center px-5 py-6 shadow-sm rounded-md bg-white hover:scale-105 hover:bg-pink-200 hover:translate-y-[-7px] ease-in-out transition-all ">
                                             <div className="p-3 rounded-full bg-indigo-600 bg-opacity-75">
 
                                                 <img src="https://i.ibb.co/pdR6d6V/user.gif" className='w-14' alt="" />
@@ -135,8 +144,8 @@ const AdminLayout = (props: Props) => {
                                         </div>
                                     </div>
 
-                                    <div className="w-full mt-6 px-6 sm:w-1/2 xl:w-1/3 sm:mt-0">
-                                        <div className="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
+                                    <div className="w-full mt-6 px-6 sm:w-1/2 xl:w-1/4 sm:mt-0">
+                                        <div className="flex items-center px-5 py-6 shadow-sm rounded-md bg-white hover:scale-105 hover:bg-pink-200 hover:translate-y-[-7px] ease-in-out transition-all">
                                             <div className="p-3 rounded-full bg-orange-600 bg-opacity-75">
                                                 <img src="https://i.ibb.co/BZZSyZ8/book.gif" className='w-14' alt="" />
                                             </div>
@@ -148,15 +157,28 @@ const AdminLayout = (props: Props) => {
                                         </div>
                                     </div>
 
-                                    <div className="w-full mt-6 px-6 sm:w-1/2 xl:w-1/3 xl:mt-0">
-                                        <div className="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
+                                    <div className="w-full mt-6 px-6 sm:w-1/2 xl:w-1/4 xl:mt-0">
+                                        <div className="flex items-center px-5 py-6 shadow-sm rounded-md bg-white hover:scale-105 hover:bg-pink-200 hover:translate-y-[-7px] ease-in-out transition-all">
                                             <div className="p-3 rounded-full bg-pink-600 bg-opacity-75">
                                                 <img src="https://i.ibb.co/gzSxzfh/checklist.gif" className='w-14' alt="" />
                                             </div>
 
                                             <div className="mx-5">
                                                 <h4 className="text-2xl font-semibold text-gray-700">215,542</h4>
-                                                <div className="text-gray-500">Available Products</div>
+                                                <div className="text-gray-500">Total Category</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="w-full mt-6 px-6 sm:w-1/2 xl:w-1/4 xl:mt-0">
+                                        <div className="flex items-center px-5 py-6 shadow-sm rounded-md bg-white hover:scale-105 hover:bg-pink-200 hover:translate-y-[-7px] ease-in-out transition-all">
+                                            <div className="p-3 rounded-full bg-stone-500 bg-opacity-75">
+                                                <img src="https://i.ibb.co/J5swndJ/shipping.gif" className='w-14' alt="" />
+                                            </div>
+
+                                            <div className="mx-5">
+                                                <h4 className="text-2xl font-semibold text-gray-700">215,542</h4>
+                                                <div className="text-gray-500">Total Cart</div>
                                             </div>
                                         </div>
                                     </div>

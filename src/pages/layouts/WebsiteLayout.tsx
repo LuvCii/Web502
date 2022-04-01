@@ -51,7 +51,7 @@ const WebsiteLayout = (props: Props) => {
                   <Link to="/product" className="p-2" aria-current="page"> <img src="https://i.ibb.co/RbF9M4j/user.png" width="30px" alt="" /> </Link>
                 </li>
                 <li className='mx-2 hover:translate-x-1  ease-in-out transition-all'>
-                  <Link to="/product" className="p-2" aria-current="page"> <img src="https://i.ibb.co/tL4sN5s/login.png" width="30px" alt="" /> </Link>
+                  <Link to="/signin" className="p-2" aria-current="page"> <img src="https://i.ibb.co/tL4sN5s/login.png" width="30px" alt="" /> </Link>
                 </li>
 
               </ul>
