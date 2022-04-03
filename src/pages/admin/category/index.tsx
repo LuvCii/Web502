@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 type Props = {}
 
@@ -7,7 +8,21 @@ const index = (props: Props) => {
         <div>
             <h1>List category</h1>
 
+
             <div className="flex flex-col mt-8">
+                <div className=" mb-7 w-full sm:w-1/2 xl:w-[180px]">
+                    <Link to="/admin/product/add" className="flex items-center px-2 py-2 shadow-sm rounded-md bg-blue-500 hover:scale-105 hover:bg-blue-700 hover:scale-105 ease-in-out transition-all ">
+                        <div className="pl-4 py-1 bg-opacity-75">
+
+                            <img src="https://i.ibb.co/Y8jyXCb/add-cate.png" className='w-[30px]' alt="" />
+                        </div>
+
+                        <div className="mx-2">
+                            <div className="text-white">Add Category</div>
+                        </div>
+                    </Link>
+                </div>
+
                 <div className="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
                     <div
                         className="align-middle inline-block w-6/12 shadow overflow-hidden sm:rounded-lg border-b border-gray-200">

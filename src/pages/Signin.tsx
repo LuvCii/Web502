@@ -1,8 +1,42 @@
 import React from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import { signin } from '../api/auth';
+import { authenticated } from '../utils/localStorage';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+// import toastr from 'toastr'
+// import 'toastr/build/toastr.min.css'
+
+type FormInputs = {
+    email: string,
+    password: string
+}
 
 type Props = {}
 
-const Signin = (props: Props) => {
+
+const Signin = () => {
+    const { register, handleSubmit, formState: { errors } } = useForm<FormInputs>();
+    const navigate = useNavigate();
+
+    const onSubmit: SubmitHandler<FormInputs> = async data => {
+        const { data: user } = await signin(data)
+        console.log((user));
+        if (data) {
+            toast.success("Đăng nhập thành công, waiting 2 seconds");
+            setTimeout(() => {
+                localStorage.setItem("user", JSON.stringify(user))
+                navigate('/')
+            }, 2000)
+        }
+        //local storage
+        // authenticated(user, () => {
+        //     navigate('/')
+        // })
+
+    }
+
     return (
         <div>
             <section className="h-screen">
@@ -15,18 +49,18 @@ const Signin = (props: Props) => {
                                 alt="Phone image" />
                         </div>
                         <div className="md:w-8/12 lg:w-5/12 lg:ml-20">
-                            <form>
+                            <form onSubmit={handleSubmit(onSubmit)}>
                                 <div className="mb-6">
                                     <input
                                         type="text"
                                         className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                                        placeholder="Email address" />
+                                        placeholder="Email address" {...register('email')} />
                                 </div>
                                 <div className="mb-6">
                                     <input
                                         type="password"
                                         className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                                        placeholder="Password" />
+                                        placeholder="Password" {...register('password')} />
                                 </div>
                                 <div className="flex justify-between items-center mb-6">
                                     <div className="form-group form-check">
@@ -96,6 +130,7 @@ const Signin = (props: Props) => {
                     </div>
                 </div>
             </section>
+            <ToastContainer />
         </div>
     )
 }

@@ -6,10 +6,11 @@ import Product from './pages/viewer/Product';
 import Dashboard from './pages/admin/Dashboard';
 import AdminLayout from './pages/layouts/AdminLayout';
 import WebsiteLayout from './pages/layouts/WebsiteLayout';
-import type { ProductType } from './types/Product';
+import { ProductType } from './types/Product';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import Signin from './pages/Signin';
 import IndexProduct from './pages/admin/product';
+import AddProduct from './pages/admin/product/add';
 import IndexUser from './pages/admin/user';
 import IndexCate from './pages/admin/category';
 import IndexCart from './pages/admin/cart';
@@ -28,7 +29,7 @@ function App() {
   }, []);
 
   // Remove product
-  const onHandleRemove = async (id?: number) => {
+  const onHandleRemove = async (id: number | string) => {
     remove(id);
     // reRender
     setProducts(products.filter(item => item._id !== id));
@@ -50,6 +51,7 @@ function App() {
             <Route index element={<Navigate to="/admin/dashboard" />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="product" element={<IndexProduct products={products} onRemove={onHandleRemove} />} />
+            <Route path="product/add" element={<AddProduct />} />
             <Route path="user" element={<IndexUser />} />
             <Route path="category" element={<IndexCate />} />
             <Route path="cart" element={<IndexCart />} />
@@ -61,7 +63,5 @@ function App() {
     </div>
   )
 }
-import index from './pages/admin/category';
-import { add } from './api/product';
 
 export default App

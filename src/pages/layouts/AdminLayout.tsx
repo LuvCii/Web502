@@ -12,7 +12,7 @@ const AdminLayout = (props: Props) => {
             <div className="flex h-screen bg-gray-200">
                 <div className="fixed z-20 inset-0 bg-black opacity-50 transition-opacity lg:hidden"></div>
 
-                <div className="fixed z-30 inset-y-0 left-0 w-64 transition duration-300 transform bg-gray-900 overflow-y-auto lg:translate-x-0 lg:static lg:inset-0">
+                <div className="fixed z-30 inset-y-0 left-0 w-64 transition duration-300 transform bg-blue-900 overflow-y-auto lg:translate-x-0 lg:static lg:inset-0">
                     <div className="flex items-center justify-center mt-8">
                         <div className="flex items-center">
                             <svg className="h-12 w-12" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -25,7 +25,7 @@ const AdminLayout = (props: Props) => {
                     </div>
 
                     <nav className="mt-10">
-                        <Link className="flex items-center mt-3 py-4 px-6 bg-gray-700 bg-opacity-25 text-gray-100" to="/admin/dashboard">
+                        <Link className="flex items-center mt-3 py-4 px-6 bg-slate-100 bg-opacity-25 text-gray-100" to="/admin/dashboard">
 
                             <img src="https://i.ibb.co/BBLFfb1/business-report.png" className='w-9' alt="" />
 
@@ -33,33 +33,33 @@ const AdminLayout = (props: Props) => {
                         </Link>
 
 
-                        <Link className="flex items-center mt-4 py-4 px-6 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100"
+                        <Link className="flex items-center mt-4 py-4 px-6 text-gray-500 hover:bg-slate-100 hover:bg-opacity-25 hover:text-gray-100"
                             to="/admin/category">
 
-                            <img src="https://i.ibb.co/w08GwLK/categories.png" className='w-9' alt="" />
+                            <img src="https://i.ibb.co/vDvY58Q/shopping-list.png" className='w-9' alt="" />
 
                             <span className="mx-6">Categories</span>
                         </Link>
 
-                        <Link className="flex items-center mt-4 py-4 px-6 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100"
+                        <Link className="flex items-center mt-4 py-4 px-6 text-gray-500 hover:bg-slate-100 hover:bg-opacity-25 hover:text-gray-100"
                             to="/admin/product">
                             <img src="https://i.ibb.co/PZCsnH5/book.png" className='w-9' alt="" />
 
                             <span className="mx-6">Products</span>
                         </Link>
-                        <Link className="flex items-center mt-4 py-4 px-6 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100"
+                        <Link className="flex items-center mt-4 py-4 px-6 text-gray-500 hover:bg-slate-100 hover:bg-opacity-25 hover:text-gray-100"
                             to="/admin/user">
                             <img src="https://i.ibb.co/3YCbFjf/man.png" className='w-9' alt="" />
 
                             <span className="mx-6">User</span>
                         </Link>
-                        <Link className="flex items-center mt-4 py-4 px-6 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100"
+                        <Link className="flex items-center mt-4 py-4 px-6 text-gray-500 hover:bg-slate-100 hover:bg-opacity-25 hover:text-gray-100"
                             to="/admin/cart">
                             <img src="https://i.ibb.co/WB0MBmT/shopping-cart.png" className='w-9' alt="" />
 
                             <span className="mx-6">Cart</span>
                         </Link>
-                        <Link className="flex items-center mt-4 py-4 px-6 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100"
+                        <Link className="flex items-center mt-4 py-4 px-6 text-gray-500 hover:bg-slate-100 hover:bg-opacity-25 hover:text-gray-100"
                             to="/">
                             <img src="https://i.ibb.co/DMJKW8g/home-button.png" className='w-9' alt="" />
 
@@ -68,7 +68,7 @@ const AdminLayout = (props: Props) => {
                     </nav>
                 </div>
                 <div className="flex-1 flex flex-col overflow-hidden">
-                    <header className="flex justify-between items-center py-4 px-6 bg-white border-b-4 border-indigo-600">
+                    <header className="flex justify-between items-center py-4 px-6 bg-white border-b-2 border-indigo-300">
                         <div className="flex items-center">
                             <button className="text-gray-500 focus:outline-none lg:hidden">
                                 <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -178,7 +178,7 @@ const AdminLayout = (props: Props) => {
 
                                             <div className="mx-5">
                                                 <h4 className="text-2xl font-semibold text-gray-700">215,542</h4>
-                                                <div className="text-gray-500">Total Cart</div>
+                                                <div className="text-gray-500">Total Order</div>
                                             </div>
                                         </div>
                                     </div>
