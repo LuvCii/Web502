@@ -9,6 +9,7 @@ import WebsiteLayout from './pages/layouts/WebsiteLayout';
 import { ProductType } from './types/Product';
 import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
 import Signin from './pages/Signin';
+import Signup from './pages/Signup';
 import IndexProduct from './pages/admin/product';
 import AddProduct from './pages/admin/product/add';
 import IndexUser from './pages/admin/user';
@@ -43,6 +44,7 @@ function App() {
       const { data } = await add(product);
       if (data) {
         toast.success("Them thanh cong");
+        setProducts([...products, data]);
         setTimeout(() => {
           navigate('/admin/product')
         }, 2000)
@@ -75,6 +77,7 @@ function App() {
           </Route>
           {/* router admin */}
           <Route path="signin" element={<Signin />} />
+          <Route path="signup" element={<Signup />} />
         </Routes>
       </main>
     </div>

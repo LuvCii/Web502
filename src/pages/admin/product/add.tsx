@@ -1,7 +1,7 @@
 import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { ProductType } from '../../../types/Product'
-import { userNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 

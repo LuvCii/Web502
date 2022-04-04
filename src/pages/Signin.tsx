@@ -1,6 +1,6 @@
 import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { signin } from '../api/auth';
 import { authenticated } from '../utils/localStorage';
 import { ToastContainer, toast } from 'react-toastify';
@@ -126,6 +126,11 @@ const Signin = () => {
                                         /></svg>Continue with Twitter
                                 </a>
                             </form>
+                            <p className="text-base font-semibold mt-2 pt-1 mb-0">
+                                Don't have an account?
+                                <Link to="/signup"
+                                    className="ml-5 text-red-600 hover:text-blue-700 focus:text-red-700 transition duration-200 ease-in-out">Register</Link>
+                            </p>
                         </div>
                     </div>
                 </div>
