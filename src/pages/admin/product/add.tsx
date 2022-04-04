@@ -1,28 +1,45 @@
 import React from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { ProductType } from '../../../types/Product'
+import { userNavigate } from 'react-router-dom';
 
-type Props = {}
 
-const add = (props: Props) => {
+
+type ProductAddProps = {
+    name: string
+    onAdd: (product: ProductType) => void
+}
+type FormInputs = {
+    name: string,
+    price: number,
+    desc: string
+}
+
+const add = (props: ProductAddProps) => {
+    const { register, handleSubmit, formState: { errors } } = useForm<FormInputs>();
+    const onSumbit: SubmitHandler<FormInputs> = (data) => {
+        props.onAdd(data);
+    }
     return (
         <div>add
 
 
-            <form >
+            <form onSubmit={handleSubmit(onSumbit)}>
                 <div className="w-full  md:px-20 pt-6">
                     <div className=" bg-white rounded-md px-6 py-10 w-4/5 mx-auto">
                         <h1 className="text-center text-2xl font-bold text-gray-500 mb-10">ADD Product</h1>
                         <div className="space-y-4">
                             <div className='text-left'>
                                 <label className="text-lg font-medium">Name:</label> <br />
-                                <input type="text" placeholder="Name" id="title" className=" outline-none py-1 px-2 text-md border-2 rounded-md h-12 w-72" />
+                                <input {...register('name')} type="text" placeholder="Name" id="title" className=" outline-none py-1 px-2 text-md border-2 rounded-md h-12 w-72" />
                             </div>
                             <div className='text-left'>
                                 <label className="text-lg font-medium">Price:</label> <br />
-                                <input type="number" min='1' placeholder="Price" id="title" className=" outline-none py-1 px-2 text-md border-2 rounded-md h-12 w-72" />
+                                <input {...register('price')} type="number" min='1' placeholder="Price" id="title" className=" outline-none py-1 px-2 text-md border-2 rounded-md h-12 w-72" />
                             </div>
                             <div>
                                 <label className="block mb-2 text-lg text-left font-medium">Description:</label>
-                                <textarea id="description" placeholder="whrite here.." className="w-full font-serif h-40 p-4 text-gray-600 bg-indigo-50 outline-none rounded-md"></textarea>
+                                <textarea {...register('desc')} id="description" placeholder="whrite here.." className="w-full font-serif h-40 p-4 text-gray-600 bg-indigo-50 outline-none rounded-md"></textarea>
                             </div>
 
 

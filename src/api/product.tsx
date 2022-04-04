@@ -8,7 +8,7 @@ export const list = () => {
     return instance.get(url)
 };
 export const add = (product: ProductType) => {
-    const url = `/products/${user._id}`;
+    const url = `/product/${user?.user._id}`;
     return instance.post(url, product, {
         headers: {
             "Authorization": `Bearer ${user?.token}`
