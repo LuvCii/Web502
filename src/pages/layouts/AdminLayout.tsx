@@ -130,7 +130,7 @@ const AdminLayout = (props: Props) => {
 
                             <div className="mt-9">
                                 <div className="flex flex-wrap -mx-6">
-                                    <div className="w-full px-6 sm:w-1/2 xl:w-1/4">
+                                    <div className="w-full px-6 sm:w-1/2 xl:w-1/5">
                                         <div className="flex items-center px-5 py-6 shadow-sm rounded-md bg-white hover:scale-105 hover:bg-pink-200 hover:translate-y-[-7px] ease-in-out transition-all ">
                                             <div className="p-3 rounded-full bg-indigo-600 bg-opacity-75">
 
@@ -144,7 +144,7 @@ const AdminLayout = (props: Props) => {
                                         </div>
                                     </div>
 
-                                    <div className="w-full mt-6 px-6 sm:w-1/2 xl:w-1/4 sm:mt-0">
+                                    <div className="w-full mt-6 px-6 sm:w-1/2 xl:w-1/5 sm:mt-0">
                                         <div className="flex items-center px-5 py-6 shadow-sm rounded-md bg-white hover:scale-105 hover:bg-pink-200 hover:translate-y-[-7px] ease-in-out transition-all">
                                             <div className="p-3 rounded-full bg-orange-600 bg-opacity-75">
                                                 <img src="https://i.ibb.co/BZZSyZ8/book.gif" className='w-14' alt="" />
@@ -157,20 +157,33 @@ const AdminLayout = (props: Props) => {
                                         </div>
                                     </div>
 
-                                    <div className="w-full mt-6 px-6 sm:w-1/2 xl:w-1/4 xl:mt-0">
+                                    <div className="w-full mt-6 px-6 sm:w-1/2 xl:w-1/5 sm:mt-0">
+                                        <div className="flex items-center px-5 py-6 shadow-sm rounded-md bg-white hover:scale-105 hover:bg-pink-200 hover:translate-y-[-7px] ease-in-out transition-all">
+                                            <div className="p-3 rounded-full bg-orange-600 bg-opacity-75">
+                                                <img src="https://i.ibb.co/BZZSyZ8/book.gif" className='w-14' alt="" />
+                                            </div>
+
+                                            <div className="mx-5">
+                                                <h4 className="text-2xl font-semibold text-gray-700">200,521</h4>
+                                                <div className="text-gray-500">Total Post</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="w-full mt-6 px-6 sm:w-1/2 xl:w-1/5 xl:mt-0">
                                         <div className="flex items-center px-5 py-6 shadow-sm rounded-md bg-white hover:scale-105 hover:bg-pink-200 hover:translate-y-[-7px] ease-in-out transition-all">
                                             <div className="p-3 rounded-full bg-pink-600 bg-opacity-75">
                                                 <img src="https://i.ibb.co/gzSxzfh/checklist.gif" className='w-14' alt="" />
                                             </div>
 
-                                            <div className="mx-5">
+                                            <div className="mx-4">
                                                 <h4 className="text-2xl font-semibold text-gray-700">215,542</h4>
                                                 <div className="text-gray-500">Total Category</div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div className="w-full mt-6 px-6 sm:w-1/2 xl:w-1/4 xl:mt-0">
+                                    <div className="w-full mt-6 px-6 sm:w-1/2 xl:w-1/5 xl:mt-0">
                                         <div className="flex items-center px-5 py-6 shadow-sm rounded-md bg-white hover:scale-105 hover:bg-pink-200 hover:translate-y-[-7px] ease-in-out transition-all">
                                             <div className="p-3 rounded-full bg-stone-500 bg-opacity-75">
                                                 <img src="https://i.ibb.co/J5swndJ/shipping.gif" className='w-14' alt="" />
