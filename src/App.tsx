@@ -12,10 +12,11 @@ import Signin from './pages/Signin';
 import Signup from './pages/Signup';
 import IndexProduct from './pages/admin/product';
 import AddProduct from './pages/admin/product/add';
+import EditProduct from './pages/admin/product/edit';
 import IndexUser from './pages/admin/user';
 import IndexCate from './pages/admin/category';
 import IndexCart from './pages/admin/cart';
-import { add, list, remove } from './api/product';
+import { add, list, remove, update } from './api/product';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // import toastr from 'toastr'
@@ -39,6 +40,8 @@ function App() {
     // reRender
     setProducts(products.filter(item => item._id !== id));
   }
+
+  // Add product
   const onHandleAdd = async (product: ProductType) => {
     try {
       const { data } = await add(product);
@@ -53,6 +56,19 @@ function App() {
 
     }
   }
+
+  // Update Product
+  const onHandleUpdate = async (product: ProductType) => {
+    try {
+      const { data } = await update(product);
+      if (data) {
+        toast.success("Sua thanh cong");
+      }
+    } catch (error) {
+
+    }
+  }
+
 
   return (
     <div className="App">
@@ -71,6 +87,7 @@ function App() {
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="product" element={<IndexProduct products={products} onRemove={onHandleRemove} />} />
             <Route path="product/add" element={<AddProduct name='Dung' onAdd={onHandleAdd} />} />
+            <Route path="product/:id/edit" element={<EditProduct name='Dung' onUpdate={onHandleUpdate} />} />
             <Route path="user" element={<IndexUser />} />
             <Route path="category" element={<IndexCate />} />
             <Route path="cart" element={<IndexCart />} />

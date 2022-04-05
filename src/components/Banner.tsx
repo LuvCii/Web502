@@ -1,6 +1,6 @@
 import React from 'react';
 import 'react-slideshow-image/dist/styles.css';
-import { Slide } from 'react-slideshow-image';
+import { Fade, Slide } from 'react-slideshow-image';
 
 
 const slideImages = [
@@ -20,16 +20,18 @@ const slideImages = [
 
 const Banner = () => {
     return (
-        <div className="slide-container w-[1780px] mx-auto">
-            <Slide>
+        <div className="relative slide-container w-[1780px] mx-auto">
+            {/* <Slide> */}
+            <Fade>
                 {slideImages.map((slideImage, index) => (
                     <div className="each-slide w-[1780px] mx-auto" key={index}>
-                        <div className='h-[634px] mx-auto w-[1780px] rounded-lg' style={{ 'backgroundImage': `url(${slideImage.url})` }}>
-                            <h1 className='pt-[200px] text-white text-9xl text-shadow-xl font-bold'>{slideImage.caption}</h1>
+                        <div className='h-[634px] mx-auto w-[1780px] rounded-lg ' style={{ 'backgroundImage': `url(${slideImage.url})` }}>
+                            <h1 className='px-12 pt-[200px] text-white text-9xl text-shadow-xl font-bold'>{slideImage.caption}</h1>
                         </div>
                     </div>
                 ))}
-            </Slide>
+            </Fade>
+            {/* </Slide> */}
         </div>
     )
 }

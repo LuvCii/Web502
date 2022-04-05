@@ -28,7 +28,11 @@ export const read = (_id: any) => {
     const url = `/products/${_id}`;
     return instance.get(url);
 }
-export const update = (product: any) => {
-    const url = `/products/${product._id}`;
-    return instance.put(url, product);
+export const update = (product: ProductType) => {
+    const url = `/product/${user?.user._id}/${product._id}`;
+    return instance.patch(url, product, {
+        headers: {
+            "Authorization": `Bearer ${user?.token}`
+        }
+    });
 }
