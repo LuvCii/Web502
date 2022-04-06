@@ -16,6 +16,7 @@ import EditProduct from './pages/admin/product/edit';
 import IndexUser from './pages/admin/user';
 import IndexCate from './pages/admin/category';
 import IndexCart from './pages/admin/cart';
+import PrivateRouter from './components/PrivateRouter';
 import { add, list, remove, update } from './api/product';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -82,7 +83,7 @@ function App() {
           </Route>
           {/* router viewer */}
 
-          <Route path="admin" element={<AdminLayout />}>
+          <Route path="admin" element={<PrivateRouter><AdminLayout /></PrivateRouter>}>
             <Route index element={<Navigate to="/admin/dashboard" />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="product" element={<IndexProduct products={products} onRemove={onHandleRemove} />} />
