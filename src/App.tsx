@@ -20,11 +20,32 @@ import PrivateRouter from './components/PrivateRouter';
 import { add, list, remove, update } from './api/product';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { User } from './types/User';
 // import toastr from 'toastr'
 
 
 function App() {
   const navigate = useNavigate();
+
+
+
+  const [users, setUsers] = useState<User[]>([])
+  useEffect(() => {
+    const getUsers = async () => {
+      const { data } = await list();
+      setUsers(data);
+    }
+    getUsers();
+  }, []);
+
+  // Remove User
+  const onHandleRemoveUser = async (id: number | string) => {
+    remove(id);
+    // reRender
+    setUsers(users.filter(item => item._id !== id));
+  }
+
+
 
   const [products, setProducts] = useState<ProductType[]>([])
   useEffect(() => {
@@ -89,7 +110,7 @@ function App() {
             <Route path="product" element={<IndexProduct products={products} onRemove={onHandleRemove} />} />
             <Route path="product/add" element={<AddProduct name='Dung' onAdd={onHandleAdd} />} />
             <Route path="product/:id/edit" element={<EditProduct name='Dung' onUpdate={onHandleUpdate} />} />
-            <Route path="user" element={<IndexUser />} />
+            <Route path="user" element={<IndexUser users={users} onRemove={onHandleRemoveUser} />} />
             <Route path="category" element={<IndexCate />} />
             <Route path="cart" element={<IndexCart />} />
           </Route>
