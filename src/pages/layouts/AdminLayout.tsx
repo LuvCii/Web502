@@ -78,20 +78,16 @@ const AdminLayout = (props: Props) => {
                             </button>
 
                             <div className="relative mx-4 lg:mx-0">
-                                <form action="">
-                                    <span className="absolute inset-y-0 left-0 pl-3 flex items-center">
-                                        <svg className="h-5 w-5 text-gray-500" viewBox="0 0 24 24" fill="none">
-                                            <path
-                                                d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            </path>
-                                        </svg>
-                                    </span>
-
-                                    <input className="py-2 w-32 sm:w-64 rounded-md pl-10 pr-4 focus:border-indigo-600 z-30" type="text"
-                                        placeholder="Search" />
-
-                                </form>
+                                <div hidden className="md:block">
+                                    <div className="relative flex items-center text-gray-400 focus-within:text-cyan-400">
+                                        <span className="absolute left-4 h-6 flex items-center pr-3 border-r border-gray-300">
+                                            <svg xmlns="http://ww50w3.org/2000/svg" className="w-4 fill-current" viewBox="0 0 35.997 36.004">
+                                                <path id="Icon_awesome-search" data-name="search" d="M35.508,31.127l-7.01-7.01a1.686,1.686,0,0,0-1.2-.492H26.156a14.618,14.618,0,1,0-2.531,2.531V27.3a1.686,1.686,0,0,0,.492,1.2l7.01,7.01a1.681,1.681,0,0,0,2.384,0l1.99-1.99a1.7,1.7,0,0,0,.007-2.391Zm-20.883-7.5a9,9,0,1,1,9-9A8.995,8.995,0,0,1,14.625,23.625Z"></path>
+                                            </svg>
+                                        </span>
+                                        <input type="search" name="leadingIcon" id="leadingIcon" placeholder="Search here" className="w-full pl-14 pr-4 py-2.5 rounded-xl text-sm text-gray-600 outline-none border border-gray-300 focus:border-cyan-300 transition" />
+                                    </div>
+                                </div>
 
                             </div>
                         </div>

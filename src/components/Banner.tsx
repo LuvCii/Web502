@@ -20,7 +20,7 @@ const slideImages = [
 
 const Banner = () => {
     return (
-        <div className="relative slide-container w-[1780px] mx-auto">
+        <div className="relative pt-52 slide-container w-[1780px] mx-auto">
             {/* <Slide> */}
             <Fade>
                 {slideImages.map((slideImage, index) => (

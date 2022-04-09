@@ -20,10 +20,10 @@ const Signup = () => {
         console.log(data);
 
         if (data) {
-            toast.success("Bạn đã đăng ký thành công");
+            toast.success("Đăng ký thành công");
             setTimeout(() => {
                 navigate('/signin')
-            }, 3000)
+            }, 2000)
         }
     }
     return (
@@ -120,8 +120,8 @@ const Signup = () => {
                         </div>
                     </div>
                 </div>
-                <ToastContainer />
             </section>
+            <ToastContainer />
         </div>
     )
 }
