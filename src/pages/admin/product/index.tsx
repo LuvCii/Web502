@@ -5,7 +5,7 @@ import { ProductType } from '../../../types/Product';
 
 type ProductProps = {
     products: ProductType[];
-    onRemove: (_id: number | string) => void
+    onRemove: (_id: number) => void
 }
 // const userLocal = JSON.parse(localStorage.getItem("user") as string);
 

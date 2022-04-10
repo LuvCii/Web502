@@ -2,27 +2,27 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { User } from '../../../types/User';
 import { useEffect } from 'react';
-import { list } from '../../../api/user';
+// import { listCate } from '../../../api/user';
 
 type UserProps = {
-    // users: User[];
-    email: string,
-    name: string,
-    password: string
-    onRemove: (_id: number | string) => void
+    users: User[];
+    // email: string,
+    // name: string,
+    // password: string
+    onRemove: (_id: number) => void
 }
 
 const index = (props: UserProps) => {
-    const [user, setUser] = useState<UserProps[]>([])
-    useEffect(() => {
-        (async () => {
-            const { data } = await list();
-            setUser(data)
-            // console.log(data, set);
+    // const [user, setUser] = useState<UserProps[]>([])
+    // useEffect(() => {
+    //     (async () => {
+    //         const { data } = await list();
+    //         setUser(data)
+    //         // console.log(data, set);
 
-        })()
+    //     })()
 
-    }, [])
+    // }, [])
     return (
         <div><h1>User list</h1>
 
@@ -55,7 +55,7 @@ const index = (props: UserProps) => {
                             </thead>
 
                             <tbody className="bg-white">
-                                {user.map((item, index) => {
+                                {props.users.map((item, index) => {
                                     return <tr key={index}>
                                         <td className=" whitespace-no-wrap border-b border-gray-200 ">
                                             <div className="text-sm ml-[-30px] leading-5 text-gray-500">{index + 1}</div>

@@ -21,6 +21,7 @@ import IndexCate from './pages/admin/category';
 import IndexCart from './pages/admin/cart';
 import PrivateRouter from './components/PrivateRouter';
 import { add, list, remove, update } from './api/product';
+import { listCate, removeUser, updateUser } from './api/user';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // import toastr from 'toastr'
@@ -30,23 +31,42 @@ function App() {
   const navigate = useNavigate();
 
 
-
+  // TODO .... USER
   const [users, setUsers] = useState<User[]>([])
   useEffect(() => {
     const getUsers = async () => {
-      const { data } = await list();
+      const { data } = await listCate();
       setUsers(data);
     }
     getUsers();
   }, []);
 
   // Remove User
-  const onHandleRemoveUser = async (id: number | string) => {
-    remove(id);
+  const onHandleRemoveUser = async (id: number) => {
+    removeUser(id);
     // reRender
     setUsers(users.filter(item => item._id !== id));
   }
 
+  // Update User
+  const onHandleUpdateUser = async (user: User) => {
+    try {
+      const { data } = await updateUser(user);
+      if (data) {
+        toast.success("Sua thanh cong");
+      }
+    } catch (error) {
+
+    }
+  }
+
+
+  // TODO .... END USER
+
+
+
+
+  // TODO .... CATEGORY
   const [cate, setCate] = useState<Category[]>([])
   useEffect(() => {
     const getCate = async () => {
@@ -56,13 +76,17 @@ function App() {
     getCate();
   }, []);
   // Remove Cate
-  const onHandleRemoveCate = async (id: number | string) => {
+  const onHandleRemoveCate = async (id: number) => {
     remove(id);
     // reRender
     setCate(cate.filter(item => item._id !== id));
   }
+  // TODO .... END CATEGORY
 
 
+
+
+  // TODO .... PRODUCT
   const [products, setProducts] = useState<ProductType[]>([])
   useEffect(() => {
     const getProducts = async () => {
@@ -73,7 +97,7 @@ function App() {
   }, []);
 
   // Remove product
-  const onHandleRemove = async (id: number | string) => {
+  const onHandleRemove = async (id: number) => {
     remove(id);
     // reRender
     setProducts(products.filter(item => item._id !== id));
@@ -94,6 +118,7 @@ function App() {
 
     }
   }
+  // TODO .... END PRODUCT
 
   // Update Product
   const onHandleUpdate = async (product: ProductType) => {

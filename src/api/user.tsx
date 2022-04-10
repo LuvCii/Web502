@@ -5,12 +5,12 @@ import instance from './instance';
 
 const user = isAuthenticate();
 
-export const list = () => {
+export const listCate = () => {
     const url = `user`;
     return instance.get(url)
 }
 
-export const remove = (_id: number) => {
+export const removeUser = (_id: number) => {
     const url = `/user/${user?.user._id}/${_id}`;
     return instance.delete(url, {
         headers: {
@@ -18,3 +18,12 @@ export const remove = (_id: number) => {
         }
     });
 };
+
+export const updateUser = (users: User) => {
+    const url = `/user/${user?.user._id}/${users._id}`;
+    return instance.patch(url, users, {
+        headers: {
+            "Authorization": `Bearer ${user?.token}`
+        }
+    });
+}
