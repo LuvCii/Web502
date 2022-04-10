@@ -7,6 +7,8 @@ import Dashboard from './pages/admin/Dashboard';
 import AdminLayout from './pages/layouts/AdminLayout';
 import WebsiteLayout from './pages/layouts/WebsiteLayout';
 import { ProductType } from './types/Product';
+import { User } from './types/User';
+import { Category } from './types/category';
 import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
 import Signin from './pages/Signin';
 import Signup from './pages/Signup';
@@ -21,7 +23,6 @@ import PrivateRouter from './components/PrivateRouter';
 import { add, list, remove, update } from './api/product';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { User } from './types/User';
 // import toastr from 'toastr'
 
 
@@ -46,6 +47,20 @@ function App() {
     setUsers(users.filter(item => item._id !== id));
   }
 
+  const [cate, setCate] = useState<Category[]>([])
+  useEffect(() => {
+    const getCate = async () => {
+      const { data } = await list();
+      setCate(data);
+    }
+    getCate();
+  }, []);
+  // Remove Cate
+  const onHandleRemoveCate = async (id: number | string) => {
+    remove(id);
+    // reRender
+    setCate(cate.filter(item => item._id !== id));
+  }
 
 
   const [products, setProducts] = useState<ProductType[]>([])
@@ -112,7 +127,7 @@ function App() {
             <Route path="product/add" element={<AddProduct name='Dung' onAdd={onHandleAdd} />} />
             <Route path="product/:id/edit" element={<EditProduct name='Dung' onUpdate={onHandleUpdate} />} />
             <Route path="user" element={<IndexUser users={users} onRemove={onHandleRemoveUser} />} />
-            <Route path="category" element={<IndexCate />} />
+            <Route path="category" element={<IndexCate cate={cate} onRemove={onHandleRemoveCate} />} />
             <Route path="cart" element={<IndexCart />} />
           </Route>
           {/* router admin */}
