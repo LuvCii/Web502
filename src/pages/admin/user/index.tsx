@@ -75,7 +75,7 @@ const index = (props: UserProps) => {
                                         <td className="px-6 py-4 text-left whitespace-no-wrap border-b border-gray-200">
                                             <span
                                                 className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                                1</span>
+                                                {item.role}</span>
                                         </td>
 
 

@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { signin } from '../api/auth';
 import { authenticated } from '../utils/localStorage';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import toastr from 'toastr'
-// import 'toastr/build/toastr.min.css'
+// import isEmpty from "validator/lib/isEmpty";
+// import isEmail from "validator/lib/isEmail"
+
 
 type FormInputs = {
     email: string,
@@ -24,12 +25,13 @@ const Signin = () => {
         const { data: user } = await signin(data)
         console.log((user));
         if (data) {
-            toast.success("Đăng nhập thành công, waiting 2 seconds");
+            toast.success("Đăng nhập thành công");
             setTimeout(() => {
                 localStorage.setItem("user", JSON.stringify(user))
                 navigate('/')
             }, 2000)
         }
+
         //local storage
         // authenticated(user, () => {
         //     navigate('/')
@@ -54,13 +56,23 @@ const Signin = () => {
                                     <input
                                         type="text"
                                         className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                                        placeholder="Email address" {...register('email')} />
+                                        placeholder="Email address" {...register('email', { required: true, minLength: 3, pattern: /^\S+@\S+$/i })} />
+                                    <p className='text-left pl-4 text-red-500 text-base italic'>
+                                        {errors.email?.type === 'required' && "Vui lòng điền vào trường này"}
+                                        {errors.email?.type === 'minLength' && "Vui lòng nhập trên 3 kí tự"}
+                                        {errors.email?.type === 'pattern' && "Vui lòng nhập đúng định dạng email"}
+                                    </p>
+
                                 </div>
                                 <div className="mb-6">
                                     <input
                                         type="password"
                                         className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                                        placeholder="Password" {...register('password')} />
+                                        placeholder="Password" {...register('password', { required: true, minLength: 5 })} />
+                                    <p className='text-left pl-4 text-red-500 text-base italic'>
+                                        {errors.password?.type === 'required' && "Vui lòng điền vào trường này"}
+                                        {errors.password?.type === 'minLength' && "Vui lòng nhập trên 5 kí tự"}
+                                    </p>
                                 </div>
                                 <div className="flex justify-between items-center mb-6">
                                     <div className="form-group form-check">

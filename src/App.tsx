@@ -12,6 +12,7 @@ import { Category } from './types/category';
 import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
 import Signin from './pages/Signin';
 import Signup from './pages/Signup';
+import Profile from './pages/viewer/profile';
 import Cart from './pages/viewer/cart';
 import IndexProduct from './pages/admin/product';
 import AddProduct from './pages/admin/product/add';
@@ -76,6 +77,7 @@ function App() {
   useEffect(() => {
     const getCate = async () => {
       const { data } = await listCate();
+      console.log(data);
       setCate(data);
     }
     getCate();
@@ -169,6 +171,7 @@ function App() {
             <Route path="cart" element={<IndexCart />} />
           </Route>
           {/* router admin */}
+          <Route path="profile" element={<Profile />} />
           <Route path="signin" element={<Signin />} />
           <Route path="signup" element={<Signup />} />
           <Route path="cart" element={<Cart />} />
