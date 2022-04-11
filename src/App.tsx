@@ -21,10 +21,11 @@ import IndexCate from './pages/admin/category';
 import IndexCart from './pages/admin/cart';
 import PrivateRouter from './components/PrivateRouter';
 import { add, list, remove, update } from './api/product';
-import { listCate, removeUser, updateUser } from './api/user';
+import { listUser, removeUser, updateUser } from './api/user';
+import { listCate, removeCate, updateCate, readCate } from './api/category';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import toastr from 'toastr'
+import ReactPaginate from 'react-paginate';
 
 
 function App() {
@@ -35,7 +36,7 @@ function App() {
   const [users, setUsers] = useState<User[]>([])
   useEffect(() => {
     const getUsers = async () => {
-      const { data } = await listCate();
+      const { data } = await listUser();
       setUsers(data);
     }
     getUsers();
@@ -43,9 +44,13 @@ function App() {
 
   // Remove User
   const onHandleRemoveUser = async (id: number) => {
-    removeUser(id);
-    // reRender
-    setUsers(users.filter(item => item._id !== id));
+    if (window.confirm('Bạn có muốn xóa người dùng này không ?')) {
+      removeUser(id);
+      // reRender
+      setUsers(users.filter(item => item._id !== id));
+      toast.success("Xóa thành công !");
+      <ToastContainer />
+    }
   }
 
   // Update User
@@ -70,16 +75,20 @@ function App() {
   const [cate, setCate] = useState<Category[]>([])
   useEffect(() => {
     const getCate = async () => {
-      const { data } = await list();
+      const { data } = await listCate();
       setCate(data);
     }
     getCate();
   }, []);
   // Remove Cate
   const onHandleRemoveCate = async (id: number) => {
-    remove(id);
-    // reRender
-    setCate(cate.filter(item => item._id !== id));
+    if (window.confirm('Bạn có muốn xóa danh mục này không ?')) {
+      remove(id);
+      // reRender
+      setCate(cate.filter(item => item._id !== id));
+      toast.success("Xóa thành công !");
+      <ToastContainer />
+    }
   }
   // TODO .... END CATEGORY
 
@@ -98,9 +107,13 @@ function App() {
 
   // Remove product
   const onHandleRemove = async (id: number) => {
-    remove(id);
-    // reRender
-    setProducts(products.filter(item => item._id !== id));
+    if (window.confirm('Bạn có muốn xóa sản phẩm này không ?')) {
+      remove(id);
+      // reRender
+      setProducts(products.filter(item => item._id !== id));
+      toast.success("Xóa thành công !");
+      <ToastContainer />
+    }
   }
 
   // Add product
@@ -163,6 +176,7 @@ function App() {
       </main>
     </div>
   )
+
 }
 
 export default App

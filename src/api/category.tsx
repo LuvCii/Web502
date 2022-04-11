@@ -5,12 +5,12 @@ import { isAuthenticate } from '../utils/localStorage';
 const user = isAuthenticate();
 
 
-export const list = () => {
+export const listCate = () => {
     const url = `/category`;
     return instance.get(url)
 };
 
-export const add = (category: Category) => {
+export const addCate = (category: Category) => {
     const url = `/category/${user?.user._id}`;
     return instance.post(url, category, {
         headers: {
@@ -19,7 +19,7 @@ export const add = (category: Category) => {
     });
 };
 
-export const remove = (_id: number) => {
+export const removeCate = (_id: number) => {
     const url = `/category/${user?.user._id}/${_id}`;
     return instance.delete(url, {
         headers: {
@@ -27,11 +27,11 @@ export const remove = (_id: number) => {
         }
     });
 };
-export const read = (_id: any) => {
+export const readCate = (_id: any) => {
     const url = `/category/${_id}`;
     return instance.get(url);
 }
-export const update = (category: Category) => {
+export const updateCate = (category: Category) => {
     const url = `/category/${user?.user._id}/${category._id}`;
     return instance.patch(url, category, {
         headers: {

@@ -155,8 +155,8 @@ const AdminLayout = (props: Props) => {
 
                                     <div className="w-full mt-6 px-6 sm:w-1/2 xl:w-1/5 sm:mt-0">
                                         <div className="flex items-center px-5 py-6 shadow-sm rounded-md bg-white hover:scale-105 hover:bg-pink-200 hover:translate-y-[-7px] ease-in-out transition-all">
-                                            <div className="p-3 rounded-full bg-orange-600 bg-opacity-75">
-                                                <img src="https://i.ibb.co/BZZSyZ8/book.gif" className='w-14' alt="" />
+                                            <div className="p-3 rounded-full bg-blue-600 bg-opacity-75">
+                                                <img src="https://i.ibb.co/Yt4d7dq/notebook.gif" className='w-14' alt="" />
                                             </div>
 
                                             <div className="mx-5">

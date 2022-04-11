@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Category } from '../../../types/category';
-import { list } from '../../../api/category';
+import { listCate } from '../../../api/category';
 
 
 type CateProps = {
-    name: string,
-    onRemove: (_id: number | string) => void
+    cate: Category[];
+    onRemove: (_id: number) => void
 }
 
 const index = (props: CateProps) => {
-    const [cate, setCate] = useState<CateProps[]>([])
-    useEffect(() => {
-        (async () => {
-            const { data } = await list();
-            setCate(data)
-        })()
-    }, [])
+    // const [cate, setCate] = useState<CateProps[]>([])
+    // useEffect(() => {
+    //     (async () => {
+    //         const { data } = await list();
+    //         setCate(data)
+    //     })()
+    // }, [])
     return (
         <div>
             <h1>List category</h1>
@@ -57,7 +57,7 @@ const index = (props: CateProps) => {
                             </thead>
 
                             <tbody className="bg-white">
-                                {cate.map((item, index) => {
+                                {props.cate.map((item, index) => {
                                     return <tr key={index}>
                                         <td className=" whitespace-no-wrap border-b border-gray-200 ">
                                             <div className="text-sm  leading-5 text-gray-500">{index + 1}</div>

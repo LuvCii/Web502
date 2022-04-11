@@ -1,17 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ProductType } from '../../../types/Product';
+import ReactPaginate from 'react-paginate';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 type ProductProps = {
     products: ProductType[];
     onRemove: (_id: number) => void
 }
+
 // const userLocal = JSON.parse(localStorage.getItem("user") as string);
 
 const index = (props: ProductProps) => {
+    // const [products, setProducts] = useState<ProductType[]>([].slice())
+    // const [pageNumber, setPageNumber] = useState(0);
+
+    // const productsPerPage = 4;
+    // const pageVisited = pageNumber * productsPerPage;
+    // const displayPro = products.slice(pageVisited, pageVisited + productsPerPage)
     return (
-        <div><h1>Product list</h1>
+        <div>
+            <h1>Product list</h1>
 
 
 
@@ -59,7 +71,7 @@ const index = (props: ProductProps) => {
                                 </tr>
                             </thead>
 
-                            <tbody className="bg-white">
+                            <tbody className="productss bg-white">
                                 {props.products.map((item, index) => {
                                     return <tr key={index}>
                                         <td className=" whitespace-no-wrap border-b border-gray-200 ">
@@ -102,14 +114,17 @@ const index = (props: ProductProps) => {
                                 }
                                 )
                                 }
+
+
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-
+            <ToastContainer />
         </div>
     )
+
 }
 
 export default index
