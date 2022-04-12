@@ -20,11 +20,13 @@ import AddProduct from './pages/admin/product/add';
 import EditProduct from './pages/admin/product/edit';
 import IndexUser from './pages/admin/user';
 import IndexCate from './pages/admin/category';
+import AddCate from './pages/admin/category/add';
+import EditCate from './pages/admin/category/edit';
 import IndexCart from './pages/admin/cart';
 import PrivateRouter from './components/PrivateRouter';
 import { add, list, remove, update } from './api/product';
 import { listUser, removeUser, updateUser } from './api/user';
-import { listCate, removeCate, updateCate, readProductByCate } from './api/category';
+import { listCate, removeCate, updateCate, readProductByCate, addCate } from './api/category';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ReactPaginate from 'react-paginate';
@@ -76,21 +78,38 @@ function App() {
 
 
   // TODO .... CATEGORY
-  const [cate, setCate] = useState<Category[]>([])
+  const [cates, setCates] = useState<Category[]>([])
   useEffect(() => {
     const getCate = async () => {
       const { data } = await listCate();
       // console.log(data);
-      setCate(data);
+      setCates(data);
     }
     getCate();
   }, []);
+
+  // Add product
+  const onHandleAddCate = async (cate: Category) => {
+    try {
+      const { data } = await addCate(cate);
+      if (data) {
+        toast.success("Thêm thành công!");
+        setCates([...cates, data]);
+        setTimeout(() => {
+          navigate('/admin/product')
+        }, 1000)
+      }
+    } catch (error) {
+
+    }
+  }
+
   // Remove Cate
   const onHandleRemoveCate = async (id: number) => {
     if (window.confirm('Bạn có muốn xóa danh mục này không ?')) {
-      remove(id);
+      removeCate(id);
       // reRender
-      setCate(cate.filter(item => item._id !== id));
+      setCates(cates.filter(item => item._id !== id));
       toast.success("Xóa thành công !");
       <ToastContainer />
     }
@@ -129,7 +148,7 @@ function App() {
         toast.success("Thêm thành công!");
         setProducts([...products, data]);
         setTimeout(() => {
-          navigate('/admin/product')
+          navigate('/admin/category')
         }, 1000)
       }
     } catch (error) {
@@ -146,7 +165,7 @@ function App() {
         toast.success("Sửa thành công");
         setProducts([...products, data]);
         setTimeout(() => {
-          navigate('/admin/product')
+          navigate('/admin/category')
         }, 1000)
       }
     } catch (error) {
@@ -178,7 +197,8 @@ function App() {
             <Route path="product/add" element={<AddProduct name='Dung' onAdd={onHandleAdd} />} />
             <Route path="product/:id/edit" element={<EditProduct name='Dung' onUpdate={onHandleUpdate} />} />
             <Route path="user" element={<IndexUser users={users} onRemove={onHandleRemoveUser} />} />
-            <Route path="category" element={<IndexCate cate={cate} onRemove={onHandleRemoveCate} />} />
+            <Route path="category" element={<IndexCate cate={cates} onRemove={onHandleRemoveCate} />} />
+            <Route path="category/add" element={<AddCate name='Dung' onAdd={onHandleAddCate} />} />
             <Route path="cart" element={<IndexCart />} />
           </Route>
           {/* router admin */}
