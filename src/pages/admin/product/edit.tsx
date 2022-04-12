@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ProductType } from '../../../types/Product';
 import { read, update } from '../../../api/product';
 import { useParams } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useEffect } from 'react';
+import { Category } from '../../../types/category';
+import { listCate } from '../../../api/category';
+
+
+
+type CateProps = {
+    cate: Category[];
+    name: string,
+    _id: string
+}
 
 type ProductEditProps = {
     name: string
@@ -12,10 +22,21 @@ type ProductEditProps = {
 type FormInputs = {
     name: string,
     price: number,
-    desc: string
+    desc: string,
+    category: string
 }
 
 const edit = (props: ProductEditProps) => {
+    const [cate, setCate] = useState<CateProps[]>([])
+    useEffect(() => {
+        (async () => {
+            const { data } = await listCate();
+            setCate(data)
+            // console.log(data);
+
+        })()
+    }, [])
+
     const { id } = useParams();
     const { register, handleSubmit, formState: { errors }, reset } = useForm<FormInputs>();
 
@@ -31,7 +52,7 @@ const edit = (props: ProductEditProps) => {
         props.onUpdate(data);
     }
     return (
-        <div>edit
+        <div>
 
 
 
@@ -74,10 +95,25 @@ const edit = (props: ProductEditProps) => {
                                     </div>
                                 </div>
                             </div>
+                            <div className="flex justify-center w-full">
+                                <div className="mb-3 xl:w-full">
+                                    <select {...register('category', { required: true })} className="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal    text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
+                                        <option selected>Danh mục</option>
+                                        {cate.map(item => (
+
+                                            <option value={item._id}>{item.name}</option>
+
+                                        ))}
+                                    </select>
+                                    {/* {cate.map(item => (
+                                        <p>{item.name}</p>
+                                    ))} */}
+                                </div>
+                            </div>
 
 
 
-                            <button className=" px-6 py-2 mx-auto block rounded-md text-lg font-semibold text-indigo-100 bg-indigo-600  ">ADD POST</button>
+                            <button className=" px-6 py-2 mx-auto block rounded-md text-lg font-semibold text-indigo-100 bg-indigo-600  ">EDIT POST</button>
                         </div>
                     </div>
                 </div>

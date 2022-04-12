@@ -126,11 +126,28 @@ function App() {
     try {
       const { data } = await add(product);
       if (data) {
-        toast.success("Them thanh cong");
+        toast.success("Thêm thành công!");
         setProducts([...products, data]);
         setTimeout(() => {
           navigate('/admin/product')
-        }, 2000)
+        }, 1000)
+      }
+    } catch (error) {
+
+    }
+  }
+
+
+  // Update Product
+  const onHandleUpdate = async (product: ProductType) => {
+    try {
+      const { data } = await update(product);
+      if (data) {
+        toast.success("Sửa thành công");
+        setProducts([...products, data]);
+        setTimeout(() => {
+          navigate('/admin/product')
+        }, 1000)
       }
     } catch (error) {
 
@@ -138,17 +155,6 @@ function App() {
   }
   // TODO .... END PRODUCT
 
-  // Update Product
-  const onHandleUpdate = async (product: ProductType) => {
-    try {
-      const { data } = await update(product);
-      if (data) {
-        toast.success("Sua thanh cong");
-      }
-    } catch (error) {
-
-    }
-  }
 
 
   return (
