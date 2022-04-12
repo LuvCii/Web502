@@ -96,7 +96,7 @@ const index = (props: ProductProps) => {
 
                                         <td
                                             className="px-6 py-4 text-left whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
-                                            Owner</td>
+                                            {item.category}</td>
 
                                         <td
                                             className="flex px-6 py-4 text-left whitespace-no-wrap  border-b border-gray-200 text-sm leading-5 font-medium">

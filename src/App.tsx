@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Homepage from './pages/viewer/Homepage';
 import Product from './pages/viewer/Product';
+import ProductDetail from './pages/viewer/ProductDetail';
 import Dashboard from './pages/admin/Dashboard';
 import AdminLayout from './pages/layouts/AdminLayout';
 import WebsiteLayout from './pages/layouts/WebsiteLayout';
@@ -27,6 +28,7 @@ import { listCate, removeCate, updateCate, readCate } from './api/category';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ReactPaginate from 'react-paginate';
+import Search from './pages/viewer/search';
 
 
 function App() {
@@ -155,7 +157,9 @@ function App() {
 
           <Route path="/" element={<WebsiteLayout />}>
             <Route index element={<Homepage />} />
-            <Route path="product" element={<Product />} />
+            <Route path="product" element={<Product products={products} />} />
+            <Route path="/product/:id" element={<ProductDetail />} />
+            <Route path="/product" element={<Search products={products} />} />
 
           </Route>
           {/* router viewer */}
@@ -174,7 +178,7 @@ function App() {
           <Route path="profile" element={<Profile />} />
           <Route path="signin" element={<Signin />} />
           <Route path="signup" element={<Signup />} />
-          
+
           <Route path="cart" element={<Cart />} />
         </Routes>
       </main>

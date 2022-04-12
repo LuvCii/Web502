@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { ProductType } from '../../../types/Product'
 import { useNavigate } from 'react-router-dom';
+import { listCate } from '../../../api/category';
+import { Category } from '../../../types/category';
 
 
+type CateProps = {
+    cate: Category[];
+    name: string,
+    id: string
+}
 
 type ProductAddProps = {
     name: string
@@ -12,10 +19,20 @@ type ProductAddProps = {
 type FormInputs = {
     name: string,
     price: number,
-    desc: string
+    desc: string,
+    category: string
 }
 
 const add = (props: ProductAddProps) => {
+    const [cate, setCate] = useState<CateProps[]>([])
+    useEffect(() => {
+        (async () => {
+            const { data } = await listCate();
+            setCate(data)
+            console.log(data);
+
+        })()
+    }, [])
     const { register, handleSubmit, formState: { errors } } = useForm<FormInputs>();
     const onSumbit: SubmitHandler<FormInputs> = (data) => {
         props.onAdd(data);
@@ -74,6 +91,39 @@ const add = (props: ProductAddProps) => {
                                     </div>
                                 </div>
                             </div>
+
+
+
+                            <div className="flex justify-center w-full">
+                                <div className="mb-3 xl:w-full">
+                                    <select className="form-select appearance-none
+      block
+      w-full
+      px-3
+      py-1.5
+      text-base
+      font-normal   
+      text-gray-700
+      bg-white bg-clip-padding bg-no-repeat
+      border border-solid border-gray-300
+      rounded
+      transition
+      ease-in-out
+      m-0
+      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
+                                        <option selected>Danh mục</option>
+                                        {cate.map(item => (
+
+                                            <option value={item.id}>{item.name}</option>
+
+                                        ))}
+                                    </select>
+                                    {/* {cate.map(item => (
+                                        <p>{item.name}</p>
+                                    ))} */}
+                                </div>
+                            </div>
+
 
 
 

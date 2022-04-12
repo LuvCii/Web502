@@ -1,13 +1,26 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import SideBar from '../../components/SideBar';
+import { useEffect, useState } from 'react';
 import { ProductType } from '../../types/Product';
+import { search } from '../../api/product';
+import Product from './Product';
 
-type ProductsProps = {
+type Props = {
     products: ProductType[];
 }
 
-const Product = (props: ProductsProps) => {
+const Search = (props: Props) => {
+    const [searchParams] = useSearchParams();
+
+    const [products, setProducts] = useState<ProductType[]>([])
+    useEffect(() => {
+        (async () => {
+            const { data } = await search(searchParams.get("q"))
+            setProducts(data)
+            console.log(data[0]);
+        })()
+    }, [])
+
     return (
         <div className='relative pt-52 flex'>
             <aside className="ml-[-100%] h-[950px] z-10  pb-3 px-6 w-full flex flex-col justify-between border rounded-r-lg bg-white transition duration-300 md:w-4/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%] shadow-xl shadow-zinc-400">
@@ -22,12 +35,10 @@ const Product = (props: ProductsProps) => {
                     <div className="max-w-2xl mx-auto px-4 sm:py-5 sm:px-6 lg:max-w-7xl lg:px-8">
 
                         <div className=" grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-
-
-                            {props.products.map((item) => (
+                            {products.map((item) => (
                                 <div className="group relative hover:shadow-lg hover:shadow-zinc-600 hover:translate-y-[-15px] duration-500 ease-in-out transition-all bg-white rounded-md overflow-hidden">
                                     <div className='z-30 translate-x-[-35px] delay-100 group-hover:translate-x-[0px] ease-in-out transition-all ml-1 mt-1 absolute shadow-inner rounded-lg bg-zinc-300'>
-                                        <Link to={`/product/${item._id}`}>
+                                        <Link to="/product">
                                             <svg xmlns="http://www.w3.org/2000/svg" className="hover:text-white hover:bg-red-500 rounded-lg h-7 w-7 text-slate-400 p-[2px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
@@ -76,13 +87,6 @@ const Product = (props: ProductsProps) => {
                                     </div>
                                 </div>
                             ))}
-
-
-
-
-
-
-
                         </div>
                     </div>
 
@@ -112,4 +116,4 @@ const Product = (props: ProductsProps) => {
     )
 }
 
-export default Product
+export default Search
