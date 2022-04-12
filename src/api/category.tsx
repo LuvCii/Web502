@@ -27,13 +27,13 @@ export const removeCate = (_id: number) => {
         }
     });
 };
-export const readCate = (_id: any) => {
-    const url = `/category/${_id}`;
-    return instance.get(url);
-}
+// export const readCate = (_id: any) => {
+//     const url = `/category/${_id}`;
+//     return instance.get(url);
+// }
 
 export const readProductByCate = (_id: number | string | undefined) => {
-    const url = `/categor/${_id}`;
+    const url = `/category/${_id}`;
     return instance.get(url);
 }
 

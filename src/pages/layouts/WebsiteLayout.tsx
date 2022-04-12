@@ -10,7 +10,7 @@ const WebsiteLayout = (props: Props) => {
   // todo khai báo state 
   const [search, setSearch] = useState<string>('')
   const navigate = useNavigate()
-  console.log(search);
+  // console.log(search);
   const onHandleSearch = () => {
     if (search !== '') {
       navigate(`search?q=${search}`)

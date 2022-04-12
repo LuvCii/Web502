@@ -9,7 +9,7 @@ import { Category } from '../../../types/category';
 type CateProps = {
     cate: Category[];
     name: string,
-    id: string
+    _id: string
 }
 
 type ProductAddProps = {
@@ -29,12 +29,13 @@ const add = (props: ProductAddProps) => {
         (async () => {
             const { data } = await listCate();
             setCate(data)
-            console.log(data);
+            // console.log(data);
 
         })()
     }, [])
     const { register, handleSubmit, formState: { errors } } = useForm<FormInputs>();
     const onSumbit: SubmitHandler<FormInputs> = (data) => {
+        console.log(data)
         props.onAdd(data);
     }
     return (
@@ -96,25 +97,11 @@ const add = (props: ProductAddProps) => {
 
                             <div className="flex justify-center w-full">
                                 <div className="mb-3 xl:w-full">
-                                    <select className="form-select appearance-none
-      block
-      w-full
-      px-3
-      py-1.5
-      text-base
-      font-normal   
-      text-gray-700
-      bg-white bg-clip-padding bg-no-repeat
-      border border-solid border-gray-300
-      rounded
-      transition
-      ease-in-out
-      m-0
-      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
+                                    <select {...register('category', { required: true })} className="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal    text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
                                         <option selected>Danh mục</option>
                                         {cate.map(item => (
 
-                                            <option value={item.id}>{item.name}</option>
+                                            <option value={item._id}>{item.name}</option>
 
                                         ))}
                                     </select>

@@ -24,11 +24,12 @@ import IndexCart from './pages/admin/cart';
 import PrivateRouter from './components/PrivateRouter';
 import { add, list, remove, update } from './api/product';
 import { listUser, removeUser, updateUser } from './api/user';
-import { listCate, removeCate, updateCate, readCate } from './api/category';
+import { listCate, removeCate, updateCate, readProductByCate } from './api/category';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ReactPaginate from 'react-paginate';
 import Search from './pages/viewer/search';
+import ProductOfCate from './pages/viewer/ProductOfCate';
 
 
 function App() {
@@ -79,7 +80,7 @@ function App() {
   useEffect(() => {
     const getCate = async () => {
       const { data } = await listCate();
-      console.log(data);
+      // console.log(data);
       setCate(data);
     }
     getCate();
@@ -160,7 +161,7 @@ function App() {
             <Route path="product" element={<Product products={products} />} />
             <Route path="/product/:id" element={<ProductDetail />} />
             <Route path="/product" element={<Search products={products} />} />
-
+            <Route path="/product/category/:id" element={<ProductOfCate />} />
           </Route>
           {/* router viewer */}
 
