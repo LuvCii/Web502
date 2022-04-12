@@ -31,16 +31,27 @@ const add = (props: ProductAddProps) => {
                         <div className="space-y-4">
                             <div className='text-left'>
                                 <label className="text-lg font-medium">Name:</label> <br />
-                                <input {...register('name')} type="text" placeholder="Name" id="title" className=" outline-none py-1 px-2 text-md border-2 rounded-md h-12 w-72" />
+                                <input {...register('name', { required: true, minLength: 3 })} type="text" placeholder="Name" id="title" className=" outline-none py-1 px-2 text-md border-2 rounded-md h-12 w-72" />
                             </div>
+                            <p className='text-left pl-4 text-red-500 text-base italic'>
+                                {errors.name?.type === 'required' && "Vui lòng điền vào trường này"}
+                                {errors.name?.type === 'minLength' && "Vui lòng nhập trên 3 kí tự"}
+
+                            </p>
                             <div className='text-left'>
                                 <label className="text-lg font-medium">Price:</label> <br />
-                                <input {...register('price')} type="number" min='1' placeholder="Price" id="title" className=" outline-none py-1 px-2 text-md border-2 rounded-md h-12 w-72" />
+                                <input {...register('price', { required: true })} type="number" min='1' placeholder="Price" id="title" className=" outline-none py-1 px-2 text-md border-2 rounded-md h-12 w-72" />
                             </div>
+                            <p className='text-left pl-4 text-red-500 text-base italic'>
+                                {errors.price?.type === 'required' && "Vui lòng điền vào trường này"}
+                            </p>
                             <div>
                                 <label className="block mb-2 text-lg text-left font-medium">Description:</label>
-                                <textarea {...register('desc')} id="description" placeholder="whrite here.." className="w-full font-serif h-40 p-4 text-gray-600 bg-indigo-50 outline-none rounded-md"></textarea>
+                                <textarea {...register('desc', { required: true })} id="description" placeholder="whrite here.." className="w-full font-serif h-40 p-4 text-gray-600 bg-indigo-50 outline-none rounded-md"></textarea>
                             </div>
+                            <p className='text-left pl-4 text-red-500 text-base italic'>
+                                {errors.desc?.type === 'required' && "Vui lòng điền vào trường này"}
+                            </p>
 
 
 

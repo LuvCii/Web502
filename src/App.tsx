@@ -174,6 +174,7 @@ function App() {
           <Route path="profile" element={<Profile />} />
           <Route path="signin" element={<Signin />} />
           <Route path="signup" element={<Signup />} />
+          
           <Route path="cart" element={<Cart />} />
         </Routes>
       </main>

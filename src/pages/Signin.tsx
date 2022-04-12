@@ -56,10 +56,10 @@ const Signin = () => {
                                     <input
                                         type="text"
                                         className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                                        placeholder="Email address" {...register('email', { required: true, minLength: 3, pattern: /^\S+@\S+$/i })} />
+                                        placeholder="Email address" {...register('email', { required: true, minLength: 5, pattern: /^\S+@\S+$/i })} />
                                     <p className='text-left pl-4 text-red-500 text-base italic'>
                                         {errors.email?.type === 'required' && "Vui lòng điền vào trường này"}
-                                        {errors.email?.type === 'minLength' && "Vui lòng nhập trên 3 kí tự"}
+                                        {errors.email?.type === 'minLength' && "Vui lòng nhập trên 5 kí tự"}
                                         {errors.email?.type === 'pattern' && "Vui lòng nhập đúng định dạng email"}
                                     </p>
 

@@ -89,7 +89,12 @@ const Signup = () => {
                                         type="text"
                                         className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                         id="exampleFormControlInput2"
-                                        placeholder="Name" {...register('name')} />
+                                        placeholder="Name"{...register('name', { required: true, minLength: 3 })} />
+                                    <p className='text-left pl-4 text-red-500 text-base italic'>
+                                        {errors.email?.type === 'required' && "Vui lòng điền vào trường này"}
+                                        {errors.email?.type === 'minLength' && "Vui lòng nhập trên 3 kí tự"}
+
+                                    </p>
                                 </div>
 
                                 <div className="mb-6">
@@ -97,7 +102,12 @@ const Signup = () => {
                                         type="text"
                                         className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                         id="exampleFormControlInput2"
-                                        placeholder="Email address" {...register('email')} />
+                                        placeholder="Email address" {...register('email', { required: true, minLength: 5, pattern: /^\S+@\S+$/i })} />
+                                    <p className='text-left pl-4 text-red-500 text-base italic'>
+                                        {errors.email?.type === 'required' && "Vui lòng điền vào trường này"}
+                                        {errors.email?.type === 'minLength' && "Vui lòng nhập trên 5 kí tự"}
+                                        {errors.email?.type === 'pattern' && "Vui lòng nhập đúng định dạng email"}
+                                    </p>
                                 </div>
 
                                 <div className="mb-6">
@@ -105,7 +115,12 @@ const Signup = () => {
                                         type="password"
                                         className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                         id="exampleFormControlInput2"
-                                        placeholder="Password" {...register('password')} />
+                                        placeholder="Password" {...register('password', { required: true, minLength: 5 })} />
+                                    <p className='text-left pl-4 text-red-500 text-base italic'>
+                                        {errors.password?.type === 'required' && "Vui lòng điền vào trường này"}
+                                        {errors.password?.type === 'minLength' && "Vui lòng nhập trên 5 kí tự"}
+                                    </p>
+
                                 </div>
 
 
