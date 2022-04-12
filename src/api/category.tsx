@@ -32,6 +32,11 @@ export const readCate = (_id: any) => {
     return instance.get(url);
 }
 
+export const readProductByCate = (_id: number | string | undefined) => {
+    const url = `/categor/${_id}`;
+    return instance.get(url);
+}
+
 export const updateCate = (category: Category) => {
     const url = `/category/${user?.user._id}/${category._id}`;
     return instance.patch(url, category, {
