@@ -114,7 +114,7 @@ const add = (props: ProductAddProps) => {
 
 
 
-                            <button className=" px-6 py-2 mx-auto block rounded-md text-lg font-semibold text-indigo-100 bg-indigo-600  ">ADD POST</button>
+                            <button className=" px-6 py-2 mx-auto block rounded-md text-lg font-semibold text-indigo-100 bg-indigo-600  ">ADD PRODUCT</button>
                         </div>
                     </div>
                 </div>
